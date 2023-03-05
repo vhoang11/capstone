@@ -120,3 +120,7 @@ input {
 input:focus {
   border: 3px solid cornflowerblue;
 }
+
+#tutorial-steps {
+  display: block;
+}

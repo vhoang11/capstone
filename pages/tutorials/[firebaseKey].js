@@ -15,7 +15,8 @@ export default function ViewTutorial() {
   }, [firebaseKey]);
 
   return (
-    <div className="mt-5 d-flex flex-wrap">
+    <div className="mt-5 d-flex flex-wrap" id="tutorial-page">
+
       <div className="d-flex flex-column" style={{ width: '30rem' }}>
         <img src={tutorialDetails.image} alt={tutorialDetails.title} />
       </div>
@@ -28,6 +29,18 @@ export default function ViewTutorial() {
         <hr />
         <p>{tutorialDetails.description || ''}</p>
       </div>
+
+      <div className="text-grey ms-5 details" id="tutorial-steps">
+        <img src={tutorialDetails.imageone} alt={tutorialDetails.title} />
+        <p>{tutorialDetails.stepone}</p>
+
+        <img src={tutorialDetails.imagetwo} alt={tutorialDetails.title} />
+        <p>{tutorialDetails.steptwo}</p>
+
+        <img src={tutorialDetails.imagethree} alt={tutorialDetails.title} />
+        <p>{tutorialDetails.stepthree}</p>
+      </div>
+
     </div>
   );
 }

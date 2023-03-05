@@ -1,19 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Form } from 'react-bootstrap';
-// import PropTypes from 'prop-types';
-// import { useRouter } from 'next/router';
-// import { useAuth } from '../../utils/context/authContext';
 
 // eslint-disable-next-line react/prop-types
 function GeneralInfo({ formInput, setFormInput }) {
-  // const { user } = useAuth();
-
-  // useEffect(() => {
-  //   // eslint-disable-next-line react/prop-types
-  //   if (obj.firebaseKey) setFormInput(obj);
-  // }, [obj, user]);
-
   return (
     <Form className="sign-up-container">
       <input
@@ -38,10 +28,10 @@ function GeneralInfo({ formInput, setFormInput }) {
         style={{ width: '100%', margin: '15px' }}
       />
       <input
-        type="url"
-        placeholder="Description"
+        type="file"
+        placeholder="Image"
         value={formInput.image}
-        onChange={(event) => setFormInput({ ...formInput, description: event.target.value })}
+        onChange={(event) => setFormInput({ ...formInput, image: event.target.value })}
         style={{ width: '100%', margin: '15px' }}
       />
       <div className="w-full px-3">
