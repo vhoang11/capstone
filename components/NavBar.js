@@ -5,11 +5,11 @@ import { signOut } from '../utils/auth';
 
 export default function NavBar() {
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-md navbar-dark bg-secondary">
       <div className="container-fluid">
         <Link passHref href="/">
           <a className="navbar-brand" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
-            CHANGE ME
+            Home
           </a>
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,9 +19,19 @@ export default function NavBar() {
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
-              <Link passHref href="/">
-                <a className="nav-link">
-                  Home
+              <Link passHref href="/categories">
+                <a className="/categories">
+                  Categories
+                </a>
+              </Link>
+              <Link passHref href="/tutorials">
+                <a className="/tutorials" style={{ padding: '10px' }}>
+                  Tutorials
+                </a>
+              </Link>
+              <Link passHref href="/favorites">
+                <a className="/favorites" style={{ paddingLeft: '10px', paddingRight: '20px' }}>
+                  Favorites
                 </a>
               </Link>
             </li>
