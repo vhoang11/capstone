@@ -133,3 +133,7 @@ p {
 #main-image {
   width: 40rem;
 }
+
+Image {
+  border-radius: 50%;
+}
