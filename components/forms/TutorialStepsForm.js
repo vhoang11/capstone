@@ -3,7 +3,7 @@ import React from 'react';
 
 function TutorialStepsForm({ formInput, setFormInput }) {
   return (
-    <div className="personal-info-container">
+    <div className="tutorial-steps-container">
       <input
         type="textarea"
         placeholder="Step 1."
@@ -14,7 +14,8 @@ function TutorialStepsForm({ formInput, setFormInput }) {
         style={{ width: '100%', margin: '15px', height: '100px' }}
       />
       <input
-        type="file"
+        className="step-images"
+        type="url"
         placeholder="Step 1. Image"
         value={formInput.imageone}
         onChange={(e) => {
@@ -32,7 +33,8 @@ function TutorialStepsForm({ formInput, setFormInput }) {
         style={{ width: '100%', margin: '15px', height: '100px' }}
       />
       <input
-        type="file"
+        className="step-images"
+        type="url"
         placeholder="Step 2. Image"
         value={formInput.imagetwo}
         onChange={(e) => {
@@ -50,7 +52,8 @@ function TutorialStepsForm({ formInput, setFormInput }) {
         style={{ width: '100%', margin: '15px', height: '100px' }}
       />
       <input
-        type="file"
+        className="step-images"
+        type="url"
         placeholder="Step 3. Image"
         value={formInput.imagethree}
         onChange={(e) => {

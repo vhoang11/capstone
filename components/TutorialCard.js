@@ -20,7 +20,6 @@ function TutorialCard({ tutorialObj, onUpdate }) {
       <Card.Body>
         <Card.Title>{tutorialObj.title}</Card.Title>
         <p className="card-text bold">by {tutorialObj.created_by}</p>
-        <p className="card-text bold">{tutorialObj.date_created}</p>
         <Link href={`/tutorials/${tutorialObj.firebaseKey}`} passHref>
           <Button variant="primary" className="m-2" style={{ backgroundColor: '#023e8a', fontSize: '10px' }}>VIEW</Button>
         </Link>
@@ -42,7 +41,6 @@ TutorialCard.propTypes = {
     description: PropTypes.string,
     created_by: PropTypes.bool,
     firebaseKey: PropTypes.string,
-    date_created: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

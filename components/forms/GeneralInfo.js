@@ -5,7 +5,7 @@ import { Form } from 'react-bootstrap';
 // eslint-disable-next-line react/prop-types
 function GeneralInfo({ formInput, setFormInput }) {
   return (
-    <Form className="sign-up-container">
+    <Form className="general-info-container">
       <input
         type="text"
         placeholder="Title"
@@ -28,7 +28,7 @@ function GeneralInfo({ formInput, setFormInput }) {
         style={{ width: '100%', margin: '15px' }}
       />
       <input
-        type="file"
+        type="url"
         placeholder="Image"
         value={formInput.image}
         onChange={(event) => setFormInput({ ...formInput, image: event.target.value })}

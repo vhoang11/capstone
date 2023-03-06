@@ -78,7 +78,7 @@ body {
   margin: 5px;
 }
 
-.sign-up-container {
+.general-info-container {
   height: 100%;
   width: 100%;
   display: flex;
@@ -87,7 +87,7 @@ body {
   align-items: center;
 }
 
-.sign-up-container input {
+.general-info-container input {
   margin: 5px;
   width: 200px;
   height: 40px;
@@ -95,7 +95,7 @@ body {
   font-size: 20px;
 }
 
-.personal-info-container {
+.tutorial-steps-container {
   height: 100%;
   width: 100%;
   display: flex;
@@ -104,7 +104,7 @@ body {
   align-items: center;
 }
 
-.personal-info-container input {
+.tutorial-steps-container input {
   margin: 5px;
   width: 200px;
   height: 40px;
@@ -121,6 +121,15 @@ input:focus {
   border: 3px solid cornflowerblue;
 }
 
-#tutorial-steps {
-  display: block;
+img {
+  width: 20rem;
+  padding: 20px;
+}
+
+p {
+  margin: 20px;
+}
+
+#main-image {
+  width: 40rem;
 }

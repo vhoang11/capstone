@@ -5,6 +5,7 @@ import GeneralInfo from './GeneralInfo';
 import TutorialStepsForm from './TutorialStepsForm';
 import { useAuth } from '../../utils/context/authContext';
 import { createTutorial, updateTutorial } from '../../api/tutorialData';
+import AddStep from './AddStep';
 
 const initialState = {
   title: '',
@@ -27,6 +28,14 @@ function TutorialForm({ obj }) {
   const { user } = useAuth();
   const [formInput, setFormInput] = useState({});
 
+  const time = new Date().toLocaleString('en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: 'numeric',
+    minute: '2-digit',
+  });
+
   useEffect(() => {
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj, user]);
@@ -46,7 +55,7 @@ function TutorialForm({ obj }) {
       updateTutorial(formInput)
         .then(() => router.push(`/tutorials/${obj.firebaseKey}`));
     } else {
-      const payload = { ...formInput, uid: user.uid };
+      const payload = { ...formInput, uid: user.uid, timestamp: time };
       createTutorial(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateTutorial(patchPayload).then(() => {
@@ -66,12 +75,19 @@ function TutorialForm({ obj }) {
         <div className="footer">
           <button
             type="button"
-            disabled={page === 0}
+            hidden={page === 0}
             onClick={() => {
               setPage((currPage) => currPage - 1);
             }}
           >
             Prev
+          </button>
+          <button
+            type="button"
+            hidden={page === 0}
+            onClick={AddStep}
+          >
+            Add Step
           </button>
           <button
             type="button"
