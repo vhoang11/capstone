@@ -18,14 +18,18 @@ export default function ShowCategories() {
   }, []);
 
   return (
-    <div className="d-flex flex-wrap text-center my-4" style={{ marginTop: '100px' }}>
+    <div className="text-center my-4" style={{ marginTop: '100px' }}>
       <Head>
         <title>Categories</title>
       </Head>
       <img src="http://cdn.shopify.com/s/files/1/1395/5787/articles/FCN_lead.jpg?v=1628791560" alt="hero" style={{ width: '100%' }} />
-      {categories.map((category) => (
-        <CategoryCard key={category.firebaseKey} categoryObj={category} onUpdate={getAllCategories} />
-      ))}
+      <h2>Categories</h2>
+      <div id="categories-section">
+        {categories.map((category) => (
+          <CategoryCard key={category.firebaseKey} categoryObj={category} onUpdate={getAllCategories} />
+        ))}
+      </div>
+
     </div>
   );
 }

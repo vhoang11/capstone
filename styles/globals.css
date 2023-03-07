@@ -134,6 +134,24 @@ p {
   width: 40rem;
 }
 
-Image {
-  border-radius: 50%;
+#tutorial-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#categories-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#home-categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#quote {
+  font-size: 100px;
 }

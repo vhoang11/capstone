@@ -24,10 +24,11 @@ function AllTutorials() {
         <title>Tutorials</title>
       </Head>
       <img src="https://images.food52.com/YjxdFvpJkSkrlg3hHSLzdVDBlYA=/1200x675/86e0b861-dbba-4913-ba76-cf358b88ba5b--MakeThriftMend_p177b.jpg" alt="hero" style={{ width: '100%' }} />
+      <h2>Tutorials</h2>
       <Link href="/tutorials/new" passHref>
-        <Button style={{ backgroundColor: '#023e8a', marginBottom: '30px', marginTop: '30px' }}>Create Tutorial</Button>
+        <Button style={{ backgroundColor: '#023e8a', marginBottom: '30px', marginTop: '20px' }}>Create Tutorial</Button>
       </Link>
-      <div className="d-flex flex-wrap">
+      <div id="tutorial-section">
         {tutorials.map((tutorial) => (
           <TutorialCard key={tutorial.firebaseKey} tutorialObj={tutorial} onUpdate={getAllTheTutorials} />
         ))}

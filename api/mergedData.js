@@ -1,4 +1,5 @@
 import { deleteSingleCategory, getCategoryTutorials, getSingleCategory } from './categoryData';
+import { getCreatorTutorials, getSingleCreator } from './creatorData';
 import { deleteTutorial, getSingleTutorial } from './tutorialData';
 
 const viewCategoryTutorials = (categoryFirebaseKey) => new Promise((resolve, reject) => {
@@ -36,6 +37,21 @@ const viewTutorialDetails = (tutorialFirebaseKey) => new Promise((resolve, rejec
     }).catch((error) => reject(error));
 });
 
+const viewCreatorDetails = (creatorFirebaseKey) => new Promise((resolve, reject) => {
+  Promise.all([getSingleCreator(creatorFirebaseKey), getCreatorTutorials(creatorFirebaseKey)])
+    .then(([creatorObject, creatorTutorialsArray]) => {
+      resolve({ ...creatorObject, tutorials: creatorTutorialsArray });
+    }).catch((error) => reject(error));
+});
+
+const viewCreatorTutorials = (creatorFirebaseKey) => new Promise((resolve, reject) => {
+  Promise.all([getSingleCreator(creatorFirebaseKey),
+    getCreatorTutorials(creatorFirebaseKey)])
+    .then(([creatorObject, creatorTutorialsArray]) => {
+      resolve({ ...creatorObject, tutorials: creatorTutorialsArray });
+    }).catch((error) => reject(error));
+});
+
 export {
-  viewCategoryTutorials, deleteCategoryTutorials, viewCategoryDetails, viewTutorialDetails,
+  viewCategoryTutorials, deleteCategoryTutorials, viewCategoryDetails, viewTutorialDetails, viewCreatorTutorials, viewCreatorDetails,
 };

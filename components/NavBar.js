@@ -6,10 +6,10 @@ import SearchBar from './SearchBar';
 
 export default function NavBar() {
   return (
-    <nav className="navbar navbar-expand-md" id="navbar" style={{ backgroundColor: '#b7c3f3' }}>
+    <nav className="navbar navbar-expand-md" id="navbar" style={{ backgroundColor: '#1d3557' }}>
       <div className="container-fluid">
         <Link passHref href="/">
-          <img src="/components/logo.jpg" alt="logo" style={{ padding: '10px', width: '100px' }} />
+          <img src="./logo2.png" alt="logo" style={{ padding: '10px', width: '80px' }} />
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
@@ -18,9 +18,9 @@ export default function NavBar() {
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
-              <Link passHref href="/profile">
+              <Link passHref href="/creators">
                 <a className="profile" style={{ padding: '10px', color: 'white' }}>
-                  Profile
+                  Creators
                 </a>
               </Link>
               <Link passHref href="/categories">
