@@ -28,9 +28,16 @@ function Home() {
         alt="hero"
         style={{ width: '100%' }}
       />
-      {categories.map((category) => (
-        <CategoryCard key={category.firebaseKey} categoryObj={category} onUpdate={getAllCategories} />
-      ))}
+      <div>
+        <h2 id="quote">BUY LESS, CHOOSE WELL, MAKE IT LAST</h2>
+        <p>- Vivienne Westwood</p>
+      </div>
+      <div id="home-categories">
+        {categories.map((category) => (
+          <CategoryCard key={category.firebaseKey} categoryObj={category} onUpdate={getAllCategories} />
+        ))}
+      </div>
+
     </div>
   );
 }

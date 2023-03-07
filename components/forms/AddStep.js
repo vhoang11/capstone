@@ -1,14 +1,14 @@
-/* eslint-disable no-undef */
+/* eslint-disable react/prop-types */
 import React from 'react';
 
-function AddStep() {
+function AddStep({ formInput, setFormInput }) {
   return (
     <div>
       <div className="add-step-container">
         <input
           type="textarea"
           placeholder="Step"
-          value={formInput.stepone}
+          value={formInput.step}
           onChange={(e) => {
             setFormInput({ ...formInput, step: e.target.value });
           }}
@@ -17,8 +17,8 @@ function AddStep() {
         <input
           className="step-images"
           type="url"
-          placeholder="Step Image"
-          value={formInput.imageone}
+          placeholder="Image"
+          value={formInput.image}
           onChange={(e) => {
             setFormInput({ ...formInput, image: e.target.value });
           }}

@@ -7,14 +7,12 @@ export default function ViewCategory() {
   const [categoryDetails, setCategoryDetails] = useState({});
   const router = useRouter();
 
-  // TODO: grab firebaseKey from url
   const { firebaseKey } = router.query;
 
   const getAllCategoryTutorials = () => {
     viewCategoryDetails(firebaseKey).then(setCategoryDetails);
   };
 
-  // TODO: make call to API layer to get the data
   useEffect(() => {
     getAllCategoryTutorials();
   }, []);

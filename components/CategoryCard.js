@@ -11,7 +11,7 @@ export default function CategoryCard({ categoryObj }) {
       <Card.Body>
         <Card.Title>{categoryObj.category_name}</Card.Title>
         <Link href={`/categories/${categoryObj.firebaseKey}`} passHref>
-          <Button variant="primary" className="m-2" style={{ backgroundColor: '#023e8a', margin: '20px' }}>VIEW</Button>
+          <Button variant="primary" className="m-2" style={{ backgroundColor: '#7192be', margin: '20px' }}>VIEW</Button>
         </Link>
       </Card.Body>
     </Card>

@@ -112,7 +112,7 @@ TutorialForm.propTypes = {
   obj: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
-    created_by: PropTypes.bool,
+    created_by: PropTypes.string,
     video: PropTypes.string,
     image: PropTypes.string,
     favorite: PropTypes.bool,
