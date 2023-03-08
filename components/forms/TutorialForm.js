@@ -41,6 +41,7 @@ function TutorialForm({ obj }) {
   const { user } = useAuth();
   const [formInput, setFormInput] = useState({});
   const [addInput, setAddInput] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const time = new Date().toLocaleString('en-US', {
     year: 'numeric',
@@ -58,7 +59,7 @@ function TutorialForm({ obj }) {
 
   const PageDisplay = () => {
     if (page === 0) {
-      return <GeneralInfo formInput={formInput} setFormInput={setFormInput} />;
+      return <GeneralInfo formInput={formInput} setFormInput={setFormInput} categories={categories} setCategories={setCategories} />;
     }
     return <TutorialStepsForm formInput={formInput} setFormInput={setFormInput} />;
   };
