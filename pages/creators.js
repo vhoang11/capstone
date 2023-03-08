@@ -21,7 +21,7 @@ export default function ShowCreators() {
         <title>Creators</title>
       </Head>
       <img src="https://www.rapidtransition.org/wp-content/uploads/2022/01/repair-quote-1.png" alt="hero" style={{ width: '100%' }} />
-      <h2>Creators</h2>
+      <h1>Creators</h1>
       <div id="categories-section">
         {creators.map((creator) => (
           <CreatorCard key={creator.firebaseKey} creatorObj={creator} onUpdate={getAllCreators} />

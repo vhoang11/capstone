@@ -2,29 +2,36 @@
 import React from 'react';
 
 function AddStep({ formInput, setFormInput }) {
+  const handleAdd = () => {
+    const abc = [...formInput, []];
+    setFormInput(abc);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormInput((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleDelete = (i) => {
+    const deletInput = [...formInput];
+    deletInput.splice(i, 1);
+    setFormInput(deletInput);
+  };
+
   return (
     <div>
-      <div className="add-step-container">
-        <input
-          type="textarea"
-          placeholder="Step"
-          value={formInput.step}
-          onChange={(e) => {
-            setFormInput({ ...formInput, step: e.target.value });
-          }}
-          style={{ width: '100%', margin: '15px', height: '100px' }}
-        />
-        <input
-          className="step-images"
-          type="url"
-          placeholder="Image"
-          value={formInput.image}
-          onChange={(e) => {
-            setFormInput({ ...formInput, image: e.target.value });
-          }}
-          style={{ width: '100%', margin: '15px', height: '40px' }}
-        />
-      </div>
+      <>
+        <button type="button" onClick={() => handleAdd()}>Add Step</button>
+        {formInput.map((data, i) => (
+          <div>
+            <input name={data} value={data} onChange={(e) => handleChange(e, i)} />
+            <button type="button" onClick={() => handleDelete(i)}>Delete</button>
+          </div>
+        ))}
+      </>
     </div>
   );
 }
