@@ -21,12 +21,12 @@ function TutorialCard({ tutorialObj, onUpdate }) {
         <Card.Title>{tutorialObj.favorite ? ' 🤍' : ''} {tutorialObj.title}</Card.Title>
         <p className="card-text bold">by {tutorialObj.created_by}</p>
         <Link href={`/tutorials/${tutorialObj.firebaseKey}`} passHref>
-          <Button variant="primary" className="m-2" style={{ backgroundColor: '#023e8a', fontSize: '10px' }}>VIEW</Button>
+          <Button variant="primary" className="m-2" style={{ backgroundColor: '#7192be', fontSize: '10px' }}>VIEW</Button>
         </Link>
         <Link href={`/tutorials/edit/${tutorialObj.firebaseKey}`} passHref>
           <Button variant="info" style={{ backgroundColor: '#00b4d8', fontSize: '10px' }}>EDIT</Button>
         </Link>
-        <Button variant="danger" onClick={deleteThistutorial} className="m-2" style={{ backgroundColor: '#f77f00', fontSize: '10px' }}>
+        <Button variant="danger" onClick={deleteThistutorial} className="m-2" style={{ backgroundColor: '#e9d985', borderColor: '#e9d985', fontSize: '10px' }}>
           DELETE
         </Button>
       </Card.Body>

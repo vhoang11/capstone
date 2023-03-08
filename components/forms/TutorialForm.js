@@ -20,6 +20,20 @@ const initialState = {
   imagetwo: '',
   stepthree: '',
   imagethree: '',
+  stepfour: '',
+  imagefour: '',
+  stepfive: '',
+  imagefive: '',
+  stepsix: '',
+  imagesix: '',
+  stepseven: '',
+  imageseven: '',
+  stepeight: '',
+  imageeight: '',
+  stepnine: '',
+  imagenine: '',
+  stepten: '',
+  imageten: '',
 };
 function TutorialForm({ obj }) {
   const [page, setPage] = useState(0);
@@ -73,7 +87,7 @@ function TutorialForm({ obj }) {
         .then(() => router.push(`/tutorials/${obj.firebaseKey}`));
     } else {
       const payload = {
-        ...formInput, ...addInput, uid: user.uid, timestamp: time,
+        ...formInput, uid: user.uid, timestamp: time,
       };
       createTutorial(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
