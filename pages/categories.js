@@ -22,7 +22,7 @@ export default function ShowCategories() {
       <Head>
         <title>Categories</title>
       </Head>
-      <img src="http://cdn.shopify.com/s/files/1/1395/5787/articles/FCN_lead.jpg?v=1628791560" alt="hero" style={{ width: '100%' }} />
+      <img src="https://images.squarespace-cdn.com/content/v1/5ef1e060a980b2706df431b2/1614221884088-WT9LW6ZX8I5YGOH1V0EF/File_000+%283%29.jpeg" alt="hero" style={{ width: '100%' }} />
       <h2>Categories</h2>
       <div id="categories-section">
         {categories.map((category) => (

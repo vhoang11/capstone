@@ -1,7 +1,26 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 
 function TutorialStepsForm({ formInput, setFormInput }) {
+  const [addInput, setAddInput] = useState([]);
+
+  const handleAdd = () => {
+    const abc = [...addInput, []];
+    setAddInput(abc);
+  };
+
+  const handleChange = (onChangeValue, i) => {
+    const inputdata = [...addInput];
+    inputdata[i] = onChangeValue.target.value;
+    setAddInput(inputdata);
+  };
+
+  const handleDelete = (i) => {
+    const deletVal = [...addInput];
+    deletVal.splice(i, 1);
+    setAddInput(deletVal);
+  };
+
   return (
     <div className="tutorial-steps-container">
       <input
@@ -67,6 +86,38 @@ function TutorialStepsForm({ formInput, setFormInput }) {
         }}
         style={{ width: '100%', margin: '15px', height: '40px' }}
       />
+
+      <div className="footer">
+        <button
+          type="button"
+          onClick={() => handleAdd()}
+        >
+          Add Step
+        </button>
+        {addInput.map((i) => (
+          <div id="added-steps">
+            <input
+              type="text"
+              name="step"
+              value={addInput.step}
+              placeholder="Enter step"
+              onChange={(e) => handleChange(e, i)}
+              style={{ width: '100%', margin: '15px', height: '100px' }}
+            />
+            <input
+              type="url"
+              name="image"
+              value={addInput.image}
+              placeholder="Add image url"
+              onChange={(e) => handleChange(e, i)}
+              style={{ width: '100%', margin: '15px', height: '40px' }}
+            />
+            <button type="button" onClick={() => handleDelete(i)} style={{ width: '25px' }}>x</button>
+          </div>
+
+        ))}
+      </div>
+
     </div>
   );
 }
