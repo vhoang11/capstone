@@ -68,10 +68,12 @@ function TutorialForm({ obj }) {
     setAddInput(abc);
   };
 
-  const handleChange = (onChangeValue, i) => {
-    const inputdata = [...addInput];
-    inputdata[i] = onChangeValue.target.value;
-    setAddInput(inputdata);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormInput((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   const handleDelete = (i) => {
@@ -126,8 +128,8 @@ function TutorialForm({ obj }) {
             </button>
             {addInput.map((i) => (
               <div>
-                <input type="text" name="step" value={addInput.step} placeholder="Enter step" onChange={(e) => handleChange(e, i)} />
-                <input type="url" name="image" value={addInput.image} placeholder="Add image url" onChange={(e) => handleChange(e, i)} />
+                <input type="text" name="step" value={addInput.step} placeholder="Enter step" onChange={handleChange} />
+                <input type="url" name="image" value={addInput.image} placeholder="Add image url" onChange={handleChange} />
                 <button type="button" onClick={() => handleDelete(i)} style={{ width: '25px' }}>x</button>
               </div>
             ))}
@@ -137,7 +139,7 @@ function TutorialForm({ obj }) {
             type="button"
             onClick={() => {
               if (page === FormTitles.length - 1) {
-                alert('FORM SUBMITTED');
+                alert('CONFIRM SUBMIT');
                 handleSubmit();
               } else {
                 setPage((currPage) => currPage + 1);
@@ -162,6 +164,26 @@ TutorialForm.propTypes = {
     favorite: PropTypes.bool,
     category_id: PropTypes.string,
     firebaseKey: PropTypes.string,
+    stepone: '',
+    imageone: '',
+    steptwo: '',
+    imagetwo: '',
+    stepthree: '',
+    imagethree: '',
+    stepfour: '',
+    imagefour: '',
+    stepfive: '',
+    imagefive: '',
+    stepsix: '',
+    imagesix: '',
+    stepseven: '',
+    imageseven: '',
+    stepeight: '',
+    imageeight: '',
+    stepnine: '',
+    imagenine: '',
+    stepten: '',
+    imageten: '',
   }),
 };
 
