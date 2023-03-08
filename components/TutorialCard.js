@@ -18,7 +18,7 @@ function TutorialCard({ tutorialObj, onUpdate }) {
     <Card style={{ width: '16rem', height: '27rem', margin: '10px' }}>
       <Card.Img variant="top" src={tutorialObj.image} alt={tutorialObj.title} style={{ height: '400px' }} />
       <Card.Body>
-        <Card.Title>{tutorialObj.title}</Card.Title>
+        <Card.Title>{tutorialObj.favorite ? ' 🤍' : ''} {tutorialObj.title}</Card.Title>
         <p className="card-text bold">by {tutorialObj.created_by}</p>
         <Link href={`/tutorials/${tutorialObj.firebaseKey}`} passHref>
           <Button variant="primary" className="m-2" style={{ backgroundColor: '#023e8a', fontSize: '10px' }}>VIEW</Button>
@@ -39,7 +39,8 @@ TutorialCard.propTypes = {
     title: PropTypes.string,
     image: PropTypes.string,
     description: PropTypes.string,
-    created_by: PropTypes.bool,
+    created_by: PropTypes.string,
+    favorite: PropTypes.bool,
     firebaseKey: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,

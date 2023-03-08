@@ -5,7 +5,6 @@ import GeneralInfo from './GeneralInfo';
 import TutorialStepsForm from './TutorialStepsForm';
 import { useAuth } from '../../utils/context/authContext';
 import { createTutorial, updateTutorial } from '../../api/tutorialData';
-import AddStep from './AddStep';
 
 const initialState = {
   title: '',
@@ -27,6 +26,7 @@ function TutorialForm({ obj }) {
   const router = useRouter();
   const { user } = useAuth();
   const [formInput, setFormInput] = useState({});
+  const [addInput, setAddInput] = useState([]);
 
   const time = new Date().toLocaleString('en-US', {
     year: 'numeric',
@@ -49,13 +49,32 @@ function TutorialForm({ obj }) {
     return <TutorialStepsForm formInput={formInput} setFormInput={setFormInput} />;
   };
 
+  const handleAdd = () => {
+    const abc = [...addInput, []];
+    setAddInput(abc);
+  };
+
+  const handleChange = (onChangeValue, i) => {
+    const inputdata = [...addInput];
+    inputdata[i] = onChangeValue.target.value;
+    setAddInput(inputdata);
+  };
+
+  const handleDelete = (i) => {
+    const deletVal = [...addInput];
+    deletVal.splice(i, 1);
+    setAddInput(deletVal);
+  };
+
   const handleSubmit = () => {
     // e.preventDefault();
     if (obj.firebaseKey) {
       updateTutorial(formInput)
         .then(() => router.push(`/tutorials/${obj.firebaseKey}`));
     } else {
-      const payload = { ...formInput, uid: user.uid, timestamp: time };
+      const payload = {
+        ...formInput, ...addInput, uid: user.uid, timestamp: time,
+      };
       createTutorial(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateTutorial(patchPayload).then(() => {
@@ -82,13 +101,24 @@ function TutorialForm({ obj }) {
           >
             Prev
           </button>
-          <button
-            type="button"
-            hidden={page === 0}
-            onClick={AddStep}
-          >
-            Add Step
-          </button>
+
+          <>
+            <button
+              type="button"
+              hidden={page === 0}
+              onClick={() => handleAdd()}
+            >
+              Add Step
+            </button>
+            {addInput.map((i) => (
+              <div>
+                <input type="text" name="step" value={addInput.step} placeholder="Enter step" onChange={(e) => handleChange(e, i)} />
+                <input type="url" name="image" value={addInput.image} placeholder="Add image url" onChange={(e) => handleChange(e, i)} />
+                <button type="button" onClick={() => handleDelete(i)} style={{ width: '25px' }}>x</button>
+              </div>
+            ))}
+          </>
+
           <button
             type="button"
             onClick={() => {
