@@ -11,7 +11,7 @@ export default function CreatorCard({ creatorObj }) {
       <Card.Body>
         <Card.Title>{creatorObj.name}</Card.Title>
         <Link href={`/creators/${creatorObj.firebaseKey}`} passHref>
-          <Button variant="primary" className="m-2" style={{ backgroundColor: '#f17300', margin: '20px' }}>VIEW</Button>
+          <Button variant="primary" className="m-2" style={{ backgroundColor: '#7192be', margin: '20px' }}>VIEW</Button>
         </Link>
       </Card.Body>
     </Card>

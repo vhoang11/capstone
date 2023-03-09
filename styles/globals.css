@@ -162,7 +162,7 @@ p {
   margin: 50px;
 }
 
-#tutorial-page {
+#tutorial-page, #creator-page {
   background-color: rgba(255,255,255, 0.5);
   width: 100%;
 }

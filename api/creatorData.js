@@ -86,7 +86,7 @@ const favoriteCreator = (uid) => new Promise((resolve, reject) => {
 });
 
 const getCreatorTutorials = (creatorFirebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/creators.json?orderBy="category_id"&equalTo="${creatorFirebaseKey}"`, {
+  fetch(`${endpoint}/tutorials.json?orderBy="uid"&equalTo="${creatorFirebaseKey}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'applications.json',
