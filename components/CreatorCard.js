@@ -6,12 +6,15 @@ import { Button } from 'react-bootstrap';
 
 export default function CreatorCard({ creatorObj }) {
   return (
-    <Card style={{ width: '16rem', margin: '10px', height: '30rem' }}>
+    <Card style={{
+      width: '16rem', margin: '10px', height: '30rem', border: 'transparent',
+    }}
+    >
       <Card.Img variant="top" src={creatorObj.image} alt={creatorObj.name} style={{ height: '400px' }} />
       <Card.Body>
         <Card.Title>{creatorObj.name}</Card.Title>
         <Link href={`/creators/${creatorObj.firebaseKey}`} passHref>
-          <Button variant="primary" className="m-2" style={{ backgroundColor: '#f17300', margin: '20px' }}>VIEW</Button>
+          <Button variant="primary" className="m-2" style={{ backgroundColor: '#7192be', margin: '20px' }}>VIEW</Button>
         </Link>
       </Card.Body>
     </Card>

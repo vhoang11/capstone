@@ -23,7 +23,7 @@ export default function ShowCategories() {
         <title>Categories</title>
       </Head>
       <img src="https://images.squarespace-cdn.com/content/v1/5ef1e060a980b2706df431b2/1614221884088-WT9LW6ZX8I5YGOH1V0EF/File_000+%283%29.jpeg" alt="hero" style={{ width: '100%' }} />
-      <h1>Categories</h1>
+      <h1 style={{ margin: '50px' }}>Categories</h1>
       <div id="categories-section">
         {categories.map((category) => (
           <CategoryCard key={category.firebaseKey} categoryObj={category} onUpdate={getAllCategories} />

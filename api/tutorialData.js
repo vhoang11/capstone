@@ -2,8 +2,8 @@ import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
-const getTutorials = (uid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/tutorials.json?orderBy="uid"&equalTo="${uid}"`, {
+const getTutorials = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/tutorials.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
