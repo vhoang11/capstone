@@ -6,7 +6,10 @@ import { Button } from 'react-bootstrap';
 
 export default function CreatorCard({ creatorObj }) {
   return (
-    <Card style={{ width: '16rem', margin: '10px', height: '30rem' }}>
+    <Card style={{
+      width: '16rem', margin: '10px', height: '30rem', border: 'transparent',
+    }}
+    >
       <Card.Img variant="top" src={creatorObj.image} alt={creatorObj.name} style={{ height: '400px' }} />
       <Card.Body>
         <Card.Title>{creatorObj.name}</Card.Title>

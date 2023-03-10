@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
+import Link from 'next/link';
 import { viewTutorialDetails } from '../../api/mergedData';
+import { deleteTutorial } from '../../api/tutorialData';
 
-export default function ViewTutorial() {
+export default function ViewTutorial({ tutorialObj, onUpdate, isMine }) {
   const [tutorialDetails, setTutorialDetails] = useState({});
   const router = useRouter();
 
+  const deleteThistutorial = () => {
+    if (window.confirm(`Delete ${tutorialObj.title}?`)) {
+      deleteTutorial(tutorialObj.firebaseKey).then(() => onUpdate());
+    }
+  };
   // TODO: grab firebaseKey from url
   const { firebaseKey } = router.query;
 
@@ -18,18 +27,34 @@ export default function ViewTutorial() {
     <div className="mt-5 d-flex flex-wrap" id="tutorial-page">
 
       <div className="d-flex flex-column" id="tutorial-details">
-        <img src={tutorialDetails.image} alt={tutorialDetails.title} style={{ width: '38rem', marginBottom: '100px', marginLeft: '40px' }} />
+        <img src={tutorialDetails.image} alt={tutorialDetails.title} style={{ width: '38rem', margin: '50px' }} />
       </div>
-      <div className="text-grey ms-5 details" style={{ marginTop: '20px', width: '400px' }}>
-        <h5>
-          {tutorialDetails.title} by {tutorialDetails.created_by}
-          {tutorialDetails.favorite ? ' 🤍' : ''}
-        </h5>
+      <div className="text-grey ms-5 details" style={{ marginTop: '70px', width: '400px' }}>
+        <h4>
+          {tutorialDetails.favorite ? '💛 ' : ''}
+          <b>{tutorialDetails.title}</b>
+        </h4>
+        <h6>
+          by {tutorialDetails.created_by}
+        </h6>
         <p>on {tutorialDetails.timestamp}</p>
-        <p>{tutorialDetails.categoryObject?.category_name}</p>
+        <p><b>{tutorialDetails.categoryObject?.category_name}</b></p>
         <hr />
         <p>{tutorialDetails.description || ''}</p>
       </div>
+      {isMine
+        ? (
+          <>
+            <Link href={`/tutorials/edit/${tutorialObj.firebaseKey}`} passHref>
+              <Button variant="info" style={{ backgroundColor: '#00b4d8', fontSize: '10px' }}>EDIT</Button>
+            </Link>
+            <Button variant="danger" onClick={deleteThistutorial} className="m-2" style={{ backgroundColor: '#e9d985', borderColor: '#e9d985', fontSize: '10px' }}>
+              DELETE
+            </Button>
+          </>
+
+        )
+        : ('')}
 
       <div id="tutorial-steps">
         <h2 style={{ marginLeft: '75px' }}>Instructions</h2>
@@ -88,3 +113,16 @@ export default function ViewTutorial() {
     </div>
   );
 }
+
+ViewTutorial.propTypes = {
+  tutorialObj: PropTypes.shape({
+    title: PropTypes.string,
+    image: PropTypes.string,
+    description: PropTypes.string,
+    created_by: PropTypes.string,
+    favorite: PropTypes.bool,
+    firebaseKey: PropTypes.string,
+  }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
+  isMine: PropTypes.bool.isRequired,
+};

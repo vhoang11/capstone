@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap';
 
 export default function CategoryCard({ categoryObj }) {
   return (
-    <Card style={{ width: '25rem', margin: '10px' }}>
+    <Card style={{ width: '25rem', margin: '10px', border: 'transparent' }}>
       <Card.Img variant="top" src={categoryObj.image} alt={categoryObj.category_name} style={{ height: '400px' }} />
       <Card.Body>
         <Card.Title>{categoryObj.category_name}</Card.Title>
