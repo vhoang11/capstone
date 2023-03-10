@@ -122,6 +122,7 @@ ViewTutorial.propTypes = {
     created_by: PropTypes.string,
     favorite: PropTypes.bool,
     firebaseKey: PropTypes.string,
+    uid: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
   isMine: PropTypes.bool.isRequired,
