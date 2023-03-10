@@ -165,6 +165,7 @@ TutorialForm.propTypes = {
     favorite: PropTypes.bool,
     category_id: PropTypes.string,
     firebaseKey: PropTypes.string,
+    uid: PropTypes.string,
     stepone: '',
     imageone: '',
     steptwo: '',
