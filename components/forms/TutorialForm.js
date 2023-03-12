@@ -160,6 +160,7 @@ TutorialForm.propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
     created_by: PropTypes.string,
+    creator_id: PropTypes.string,
     video: PropTypes.string,
     image: PropTypes.string,
     favorite: PropTypes.bool,

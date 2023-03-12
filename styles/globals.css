@@ -1,11 +1,12 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@100;400&display=swap');
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
   background-image: url("https://thumbs.dreamstime.com/b/abstract-watercolor-background-artistic-painted-design-wallpaper-texture-modern-art-contemporary-161989310.jpg");
 }
 
@@ -41,7 +42,7 @@ body {
   width: 100%;
   height: 100%;
   padding: 150px;
-  background-color: white;
+  background-color: rgba(255,255,255, 0.5);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -86,6 +87,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgba(255,255,255, 0.5);
 }
 
 .general-info-container input {
@@ -94,6 +96,7 @@ body {
   height: 40px;
   padding-left: 5px;
   font-size: 20px;
+  background-color: rgba(255,255,255, 0.5);
 }
 
 .tutorial-steps-container {
@@ -103,6 +106,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgba(255,255,255, 0.5);
 }
 
 .tutorial-steps-container input {
@@ -111,6 +115,7 @@ body {
   height: 40px;
   padding-left: 5px;
   font-size: 20px;
+  background-color: rgba(255,255,255, 0.5);
 }
 
 input, #select {
@@ -155,6 +160,7 @@ p {
 
 #quote {
   font-size: 100px;
+  color: #1d3557;
 }
 
 .steps {
@@ -162,7 +168,17 @@ p {
   margin: 50px;
 }
 
-#tutorial-page, #creator-page {
+#tutorial-page, #creator-page, .profile-info-container {
   background-color: rgba(255,255,255, 0.5);
   width: 100%;
+}
+
+h1 {
+  color: #1d3557;
+  font-family: 'Playfair Display';
+  font-size: 60px;
+}
+
+#navbar-profile-image {
+  border-radius: 50%;
 }

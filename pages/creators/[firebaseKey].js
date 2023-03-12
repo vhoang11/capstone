@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import TutorialCard from '../../components/TutorialCard';
 import { viewCreatorDetails } from '../../api/mergedData';
 import { useAuth } from '../../utils/context/authContext';
 
 export default function ViewCreator() {
   const [creatorDetails, setCreatorDetails] = useState({});
-  const router = useRouter();
-  const { firebaseKey } = router.query;
   const { user } = useAuth();
+  // const router = useRouter();
+  // const { firebaseKey } = router.query;
 
   const getAllCreatorTutorials = () => {
-    viewCreatorDetails(firebaseKey).then(setCreatorDetails);
+    viewCreatorDetails(user.uid).then(setCreatorDetails);
   };
 
   useEffect(() => {

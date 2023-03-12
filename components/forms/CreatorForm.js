@@ -8,24 +8,23 @@ import { useAuth } from '../../utils/context/authContext';
 import { createCreator, updateCreator } from '../../api/creatorData';
 
 const initialState = {
-  first_name: '',
-  last_name: '',
+  name: '',
   image: '',
   bio: '',
 };
 
-function ProfileForm({ obj }) {
-  const [profileInput, setProfileInput] = useState(initialState);
+function CreatorForm({ obj }) {
+  const [creatorInput, setCreatorInput] = useState(initialState);
   const router = useRouter();
   const { user } = useAuth();
 
   useEffect(() => {
-    if (obj.firebaseKey) setProfileInput(obj);
+    if (obj.firebaseKey) setCreatorInput(obj);
   }, [obj, user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setProfileInput((prevState) => ({
+    setCreatorInput((prevState) => ({
       ...prevState,
       [name]: value,
     }));
@@ -34,40 +33,29 @@ function ProfileForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateCreator(profileInput)
-        .then(() => router.push(`/profile/${obj.firebaseKey}`));
+      updateCreator(creatorInput)
+        .then(() => router.push(`/creators/${obj.firebaseKey}`));
     } else {
-      const payload = { ...profileInput, uid: user.uid };
+      const payload = { ...creatorInput, uid: user.uid };
       createCreator(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateCreator(patchPayload).then(() => {
-          router.push('/profile');
+          router.push('/creators');
         });
       });
     }
   };
 
   return (
-    <Form onSubmit={handleSubmit} style={{ marginTop: '100px' }}>
-      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Profile</h2>
+    <Form onSubmit={handleSubmit} style={{ marginTop: '100px', padding: '50px' }} className="profile-info-container">
+      <h1 className="mt-5" style={{ paddingBottom: '50px' }}>{obj.firebaseKey ? 'Update' : 'Create'} Profile</h1>
 
-      <FloatingLabel controlId="floatingInput1" label="First Name" className="mb-3">
+      <FloatingLabel controlId="floatingInput1" label="Name" className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Enter first name"
-          name="first_name"
-          value={profileInput.first_name}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-
-      <FloatingLabel controlId="floatingInput1" label="Last Name" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter last name"
-          name="last_name"
-          value={profileInput.last_name}
+          placeholder="Enter name"
+          name="name"
+          value={creatorInput.name}
           onChange={handleChange}
           required
         />
@@ -78,7 +66,7 @@ function ProfileForm({ obj }) {
           type="url"
           placeholder="Enter an image url"
           name="image"
-          value={profileInput.image}
+          value={creatorInput.image}
           onChange={handleChange}
           required
         />
@@ -89,30 +77,35 @@ function ProfileForm({ obj }) {
           type="text"
           placeholder="Enter bio"
           name="bio"
-          value={profileInput.bio}
+          value={creatorInput.bio}
           onChange={handleChange}
           required
         />
       </FloatingLabel>
 
-      {/* SUBMIT BUTTON  */}
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Profile</Button>
+      <Button
+        type="submit"
+        style={{
+          marginTop: '35px', marginBottom: '60px', backgroundColor: '#7192be', border: '#e9d985',
+        }}
+      >{obj.firebaseKey ? 'Update' : 'Create'} Profile
+      </Button>
     </Form>
   );
 }
 
-ProfileForm.propTypes = {
+CreatorForm.propTypes = {
   obj: PropTypes.shape({
-    first_name: PropTypes.string,
-    last_name: PropTypes.string,
+    name: PropTypes.string,
     image: PropTypes.string,
     bio: PropTypes.string,
     firebaseKey: PropTypes.string,
+    uid: PropTypes.string,
   }),
 };
 
-ProfileForm.defaultProps = {
+CreatorForm.defaultProps = {
   obj: initialState,
 };
 
-export default ProfileForm;
+export default CreatorForm;

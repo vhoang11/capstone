@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { deleteTutorial } from '../api/tutorialData';
 
 function TutorialCard({ tutorialObj, onUpdate, isMine }) {
-  const deleteThistutorial = () => {
+  const deleteThisTutorial = () => {
     if (window.confirm(`Delete ${tutorialObj.title}?`)) {
       deleteTutorial(tutorialObj.firebaseKey).then(() => onUpdate());
     }
@@ -30,7 +30,7 @@ function TutorialCard({ tutorialObj, onUpdate, isMine }) {
               <Link href={`/tutorials/edit/${tutorialObj.firebaseKey}`} passHref>
                 <Button variant="info" style={{ backgroundColor: '#00b4d8', fontSize: '10px' }}>EDIT</Button>
               </Link>
-              <Button variant="danger" onClick={deleteThistutorial} className="m-2" style={{ backgroundColor: '#e9d985', borderColor: '#e9d985', fontSize: '10px' }}>
+              <Button variant="danger" onClick={deleteThisTutorial} className="m-2" style={{ backgroundColor: '#e9d985', borderColor: '#e9d985', fontSize: '10px' }}>
                 DELETE
               </Button>
             </>
@@ -48,6 +48,7 @@ TutorialCard.propTypes = {
     image: PropTypes.string,
     description: PropTypes.string,
     created_by: PropTypes.string,
+    creator_id: PropTypes.string,
     favorite: PropTypes.bool,
     firebaseKey: PropTypes.string,
     uid: PropTypes.string,
