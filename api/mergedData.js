@@ -37,16 +37,16 @@ const viewTutorialDetails = (tutorialFirebaseKey) => new Promise((resolve, rejec
     }).catch((error) => reject(error));
 });
 
-const viewCreatorDetails = (creatorFirebaseKey) => new Promise((resolve, reject) => {
-  Promise.all([getSingleCreator(creatorFirebaseKey), getCreatorTutorials(creatorFirebaseKey)])
+const viewCreatorDetails = (uid) => new Promise((resolve, reject) => {
+  Promise.all([getSingleCreator(uid), getCreatorTutorials(uid)])
     .then(([creatorObject, creatorTutorialsArray]) => {
       resolve({ ...creatorObject, tutorials: creatorTutorialsArray });
     }).catch((error) => reject(error));
 });
 
-const viewCreatorTutorials = (creatorFirebaseKey) => new Promise((resolve, reject) => {
-  Promise.all([getSingleCreator(creatorFirebaseKey),
-    getCreatorTutorials(creatorFirebaseKey)])
+const viewCreatorTutorials = (uid) => new Promise((resolve, reject) => {
+  Promise.all([getSingleCreator(uid),
+    getCreatorTutorials(uid)])
     .then(([creatorObject, creatorTutorialsArray]) => {
       resolve({ ...creatorObject, tutorials: creatorTutorialsArray });
     }).catch((error) => reject(error));

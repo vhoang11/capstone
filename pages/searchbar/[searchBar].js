@@ -13,7 +13,7 @@ export default function SearchBar() {
 
   const searchAllTutorials = () => {
     getTutorials().then((tutorials) => {
-      const filteredTutorials = tutorials.filter((tutorial) => tutorial.title.toLowerCase().includes(searchBar) || tutorial.description.toLowerCase().includes(searchBar) || tutorial.timestamp.includes(searchBar));
+      const filteredTutorials = tutorials.filter((tutorial) => tutorial.title.toLowerCase().includes(searchBar) || tutorial.description.toLowerCase().includes(searchBar) || tutorial.description.includes(searchBar) || tutorial.timestamp.includes(searchBar));
 
       setSearchTutorials(filteredTutorials);
     });

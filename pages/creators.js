@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { getCreators } from '../api/creatorData';
 import CreatorCard from '../components/CreatorCard';
+import { useAuth } from '../utils/context/authContext';
 
 export default function ShowCreators() {
   const [creators, setCreators] = useState([]);
+  const { user } = useAuth();
 
   const getAllCreators = () => {
     getCreators().then(setCreators);
@@ -24,7 +26,7 @@ export default function ShowCreators() {
       <h1 style={{ margin: '50px' }}>Creators</h1>
       <div id="categories-section">
         {creators.map((creator) => (
-          <CreatorCard key={creator.firebaseKey} creatorObj={creator} onUpdate={getAllCreators} />
+          <CreatorCard key={creator.firebaseKey} creatorObj={creator} onUpdate={getAllCreators} isMine={creator.uid === user.uid} />
         ))}
       </div>
 

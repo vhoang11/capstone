@@ -20,8 +20,8 @@ const getCreators = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSingleCreator = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/creators/${firebaseKey}.json`, {
+const getSingleCreator = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/creators/${uid}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -85,8 +85,8 @@ const favoriteCreator = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getCreatorTutorials = (creatorFirebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/tutorials.json?orderBy="uid"&equalTo="${creatorFirebaseKey}"`, {
+const getCreatorTutorials = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/tutorials.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'applications.json',
