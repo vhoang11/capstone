@@ -20,8 +20,8 @@ const getCreators = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSingleCreator = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/creators/${firebaseKey}.json`, {
+const getSingleCreator = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/creators/${uid}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
