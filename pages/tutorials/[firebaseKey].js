@@ -5,20 +5,20 @@ import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
 import { viewTutorialDetails } from '../../api/mergedData';
 import { deleteTutorial } from '../../api/tutorialData';
+import { useAuth } from '../../utils/context/authContext';
 
 export default function ViewTutorial({ tutorialObj, onUpdate, isMine }) {
   const [tutorialDetails, setTutorialDetails] = useState({});
   const router = useRouter();
+  const { user } = useAuth;
+  const { firebaseKey } = router.query;
 
   const deleteThistutorial = () => {
     if (window.confirm(`Delete ${tutorialObj.title}?`)) {
       deleteTutorial(tutorialObj.firebaseKey).then(() => onUpdate());
     }
   };
-  // TODO: grab firebaseKey from url
-  const { firebaseKey } = router.query;
 
-  // TODO: make call to API layer to get the data
   useEffect(() => {
     viewTutorialDetails(firebaseKey).then(setTutorialDetails);
   }, [firebaseKey]);
@@ -42,19 +42,22 @@ export default function ViewTutorial({ tutorialObj, onUpdate, isMine }) {
         <hr />
         <p>{tutorialDetails.description || ''}</p>
       </div>
-      {isMine
-        ? (
-          <>
-            <Link href={`/tutorials/edit/${tutorialObj.firebaseKey}`} passHref>
-              <Button variant="info" style={{ backgroundColor: '#00b4d8', fontSize: '10px' }}>EDIT</Button>
-            </Link>
-            <Button variant="danger" onClick={deleteThistutorial} className="m-2" style={{ backgroundColor: '#e9d985', borderColor: '#e9d985', fontSize: '10px' }}>
-              DELETE
-            </Button>
-          </>
 
-        )
-        : ('')}
+      <div>
+        {isMine
+          ? (
+            <>
+              <Link href={`/tutorials/edit/${tutorialObj.firebaseKey}`} passHref>
+                <Button variant="info" style={{ backgroundColor: '#00b4d8', fontSize: '10px' }} isMine={tutorialObj.uid === user.uid}>EDIT</Button>
+              </Link>
+              <Button variant="danger" onClick={deleteThistutorial} className="m-2" style={{ backgroundColor: '#e9d985', borderColor: '#e9d985', fontSize: '10px' }} isMine={tutorialObj.uid === user.uid}>
+                DELETE
+              </Button>
+            </>
+
+          )
+          : ('') }
+      </div>
 
       <div id="tutorial-steps">
         <h2 style={{ marginLeft: '75px' }}>Instructions</h2>

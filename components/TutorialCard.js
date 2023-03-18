@@ -14,12 +14,21 @@ function TutorialCard({ tutorialObj, onUpdate, isMine }) {
 
   return (
     <Card style={{
-      width: '16rem', height: '27rem', margin: '10px', border: 'transparent',
+      width: '16rem', height: '28rem', margin: '10px', border: 'transparent',
     }}
     >
       <Card.Img variant="top" src={tutorialObj.image} alt={tutorialObj.title} style={{ height: '400px' }} />
       <Card.Body>
-        <Card.Title>{tutorialObj.favorite ? ' 💛' : ''} {tutorialObj.title}</Card.Title>
+        <Button
+          className="btn-sm"
+          style={{
+            backgroundColor: 'transparent', borderColor: 'transparent', marginRight: '10px',
+          }}
+        >🤍
+        </Button>
+        <Card.Title>
+          {tutorialObj.title}
+        </Card.Title>
         <p className="card-text bold">by {tutorialObj.created_by}</p>
         <Link href={`/tutorials/${tutorialObj.firebaseKey}`} passHref>
           <Button variant="primary" className="m-2" style={{ backgroundColor: '#7192be', fontSize: '10px' }}>VIEW</Button>

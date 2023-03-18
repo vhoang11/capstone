@@ -41,12 +41,12 @@ export default function NavBar() {
                 </a>
               </Link>
               <Link passHref href="/tutorials">
-                <a className="/tutorials" style={{ paddingLeft: '10px', paddingRight: '10px', color: 'white' }}>
+                <a className="tutorials" style={{ paddingLeft: '10px', paddingRight: '10px', color: 'white' }}>
                   Tutorials
                 </a>
               </Link>
               <Link passHref href="/favorites">
-                <a className="/favorites" style={{ paddingLeft: '10px', paddingRight: '20px', color: 'white' }}>
+                <a className="favorites" style={{ paddingLeft: '10px', paddingRight: '20px', color: 'white' }}>
                   Favorites
                 </a>
               </Link>

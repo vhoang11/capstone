@@ -17,7 +17,12 @@ export default function UserProfile() {
       <Button variant="danger" onClick={signOut} style={{ marginTop: '35px', backgroundColor: '#7192be', border: '#e9d985' }}> Sign Out</Button>
       <div>
         <Link passHref href="/creators/new">
-          <Button variant="info" style={{ backgroundColor: '#00b4d8', marginTop: '35px', color: 'white' }}>Create Profile</Button>
+          <Button
+            type="submit"
+            variant="info"
+            style={{ backgroundColor: '#00b4d8', marginTop: '35px', color: 'white' }}
+          >Create Profile
+          </Button>
         </Link>
       </div>
 
