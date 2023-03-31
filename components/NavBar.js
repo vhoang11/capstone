@@ -1,13 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Navbar } from 'react-bootstrap';
 import SearchBar from './SearchBar';
-import { useAuth } from '../utils/context/authContext';
+// import { useAuth } from '../utils/context/authContext';
 
 export default function NavBar() {
-  const { user } = useAuth();
+  // const { user } = useAuth();
   return (
     <nav className="navbar navbar-expand-md" id="navbar" style={{ backgroundColor: '#1d3557' }}>
       <div className="container-fluid">
@@ -46,17 +44,17 @@ export default function NavBar() {
                 </a>
               </Link>
               <Link passHref href="/favorites">
-                <a className="favorites" style={{ paddingLeft: '10px', paddingRight: '20px', color: 'white' }}>
+                <a className="favorites" style={{ paddingLeft: '10px', paddingRight: '30px', color: 'white' }}>
                   Favorites
                 </a>
               </Link>
             </li>
             <SearchBar />
-            <Navbar.Brand className="navbar-brand" id="navbar-profile-image" style={{ marginLeft: '200px' }}>
-              <Link passHref href="/profile">
+            {/* <Link passHref href="/profile">
+              <Navbar.Brand className="navbar-brand" id="navbar-profile-image" style={{ marginLeft: '200px' }}>
                 <Image src={user.photoURL} alt="userURL" width="40%" height="40%" />
-              </Link>
-            </Navbar.Brand>
+              </Navbar.Brand>
+            </Link> */}
           </ul>
         </div>
       </div>

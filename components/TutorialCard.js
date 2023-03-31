@@ -19,14 +19,21 @@ function TutorialCard({ tutorialObj, onUpdate, isMine }) {
     >
       <Card.Img variant="top" src={tutorialObj.image} alt={tutorialObj.title} style={{ height: '400px' }} />
       <Card.Body>
-        <Button
+        {/* <Button
           className="btn-sm"
           style={{
             backgroundColor: 'transparent', borderColor: 'transparent', marginRight: '10px',
           }}
         >🤍
-        </Button>
+        </Button> */}
         <Card.Title>
+          {isMine
+            ? (
+              <>
+                {tutorialObj.favorite ? ' 💛' : ''}
+              </>
+            )
+            : ('')}
           {tutorialObj.title}
         </Card.Title>
         <p className="card-text bold">by {tutorialObj.created_by}</p>

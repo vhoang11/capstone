@@ -1,23 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
-import Link from 'next/link';
 import { viewTutorialDetails } from '../../api/mergedData';
-import { deleteTutorial } from '../../api/tutorialData';
-import { useAuth } from '../../utils/context/authContext';
 
-export default function ViewTutorial({ tutorialObj, onUpdate, isMine }) {
+export default function ViewTutorial() {
   const [tutorialDetails, setTutorialDetails] = useState({});
   const router = useRouter();
-  const { user } = useAuth;
   const { firebaseKey } = router.query;
 
-  const deleteThistutorial = () => {
-    if (window.confirm(`Delete ${tutorialObj.title}?`)) {
-      deleteTutorial(tutorialObj.firebaseKey).then(() => onUpdate());
-    }
-  };
+  // const deleteThistutorial = () => {
+  //   if (window.confirm(`Delete ${tutorialObj.title}?`)) {
+  //     deleteTutorial(tutorialObj.firebaseKey).then(() => onUpdate());
+  //   }
+  // };
 
   useEffect(() => {
     viewTutorialDetails(firebaseKey).then(setTutorialDetails);
@@ -41,22 +35,6 @@ export default function ViewTutorial({ tutorialObj, onUpdate, isMine }) {
         <p><b>{tutorialDetails.categoryObject?.category_name}</b></p>
         <hr />
         <p>{tutorialDetails.description || ''}</p>
-      </div>
-
-      <div>
-        {isMine
-          ? (
-            <>
-              <Link href={`/tutorials/edit/${tutorialObj.firebaseKey}`} passHref>
-                <Button variant="info" style={{ backgroundColor: '#00b4d8', fontSize: '10px' }} isMine={tutorialObj.uid === user.uid}>EDIT</Button>
-              </Link>
-              <Button variant="danger" onClick={deleteThistutorial} className="m-2" style={{ backgroundColor: '#e9d985', borderColor: '#e9d985', fontSize: '10px' }} isMine={tutorialObj.uid === user.uid}>
-                DELETE
-              </Button>
-            </>
-
-          )
-          : ('') }
       </div>
 
       <div id="tutorial-steps">
@@ -117,16 +95,16 @@ export default function ViewTutorial({ tutorialObj, onUpdate, isMine }) {
   );
 }
 
-ViewTutorial.propTypes = {
-  tutorialObj: PropTypes.shape({
-    title: PropTypes.string,
-    image: PropTypes.string,
-    description: PropTypes.string,
-    created_by: PropTypes.string,
-    favorite: PropTypes.bool,
-    firebaseKey: PropTypes.string,
-    uid: PropTypes.string,
-  }).isRequired,
-  onUpdate: PropTypes.func.isRequired,
-  isMine: PropTypes.bool.isRequired,
-};
+// ViewTutorial.propTypes = {
+//   tutorialObj: PropTypes.shape({
+//     title: PropTypes.string,
+//     image: PropTypes.string,
+//     description: PropTypes.string,
+//     created_by: PropTypes.string,
+//     favorite: PropTypes.bool,
+//     firebaseKey: PropTypes.string,
+//     uid: PropTypes.string,
+//   }).isRequired,
+//   onUpdate: PropTypes.func.isRequired,
+//   isMine: PropTypes.bool.isRequired,
+// };
