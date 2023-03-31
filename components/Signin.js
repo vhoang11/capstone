@@ -8,13 +8,13 @@ function Signin() {
       style={{
         height: '90vh',
         padding: '30px',
-        maxWidth: '400px',
+        maxWidth: '800px',
         margin: '0 auto',
       }}
     >
-      <h1>Hi there!</h1>
+      <h1>Ready to rock n repair?</h1>
       <p>Click the button below to login!</p>
-      <button type="button" className="btn btn-primary btn-lg copy-btn" onClick={signIn}>
+      <button type="button" className="btn copy-btn" style={{ backgroundColor: '#7192be', color: 'white' }} onClick={signIn}>
         Sign In
       </button>
     </div>
